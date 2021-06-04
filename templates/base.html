@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    {% load static %}
+  <head>
+    <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <title></title>
+
+  </head>
+  <body style="background-color: rgb(250,250,250)">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="">
+  <a class="navbar-brand" href="#">SnakeTech</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'articles' %}">Articles</a>
+      </li>
+        {% if user.is_authenticated %}
+
+            {% if request.user.is_staff %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'addblog' %}">Add blog</a>
+        </li>
+                {% endif %}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+        {% else %}
+              <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+              <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Registration</a>
+      </li>
+
+        {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+      {% block content %}
+
+
+
+
+      {% endblock %}
+
+
+
+      <section class="footer" style="">
+        <div class="">
+          <h1>SNAKETECH</h1>
+          <p class="gray">random text random text random text<br>asd asd adsa adsa adad</p>
+          <br>
+          <p>Copyright 2021 All Right Reserved</p>
+        </div>
+
+        <div class="support">
+          <h2>Support</h2>
+          <a href="#" class="gray">Terms of Use</a>
+          <br>
+          <a href="#" class="gray">Cookies Use</a>
+          <br>
+          <a href="#" class="gray">FAQ</a>
+          <br>
+          <a href="#" class="gray">Privacy Policy</a>
+        </div>
+
+        <div class="">
+          <h2>Our Address</h2>
+          <p class="gray">Street x.y.z <br>Islamabad,Pakistan</p>
+
+          <div class="social">
+            <ul>
+              <li> <a href="#"> <img src="{% static '/images/google-plus.png' %}" alt="" width="50px"> </a> </li>
+              <li> <a href="#"> <img src="{% static '/images/facebook.png' %}" alt="" width="50px"></a> </li>
+              <li> <a href="#"><img src="{% static '/images/twitter.png' %}" alt="" width="50px"></a> </li>
+            </ul>
+          </div>
+        </div>
+
+
+    </section>
+
+
+
+
+<script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/animate.js' %}"></script>
+ <script>
+     AOS.init({
+        offset: 50
+      });
+ </script>
+  </body>
+</html>
